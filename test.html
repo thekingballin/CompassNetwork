@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Game Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+min-height: 100vh;
+font-family: 'Inter', sans-serif;
+color: white;
+overflow-x: hidden;
+}
+
+.container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+.header {
+text-align: center;
+margin-bottom: 3rem;
+}
+
+.header h1 {
+font-size: 3rem;
+font-weight: 700;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 1rem;
+}
+
+.search-container {
+display: flex;
+gap: 1rem;
+justify-content: center;
+margin-bottom: 3rem;
+flex-wrap: wrap;
+}
+
+.search-input, .category-select {
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 12px;
+padding: 12px 20px;
+color: white;
+font-size: 1rem;
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+}
+
+.search-input {
+width: 300px;
+}
+
+.search-input:focus, .category-select:focus {
+outline: none;
+border-color: #667eea;
+box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+transform: translateY(-2px);
+}
+
+.search-input::placeholder {
+color: rgba(255, 255, 255, 0.5);
+}
+
+.category-select option {
+background: #1a1a2e;
+color: white;
+}
+
+.games {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 2rem;
+justify-content: center;
+}
+
+.game {
+background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+border-radius: 20px;
+overflow: hidden;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+border: 1px solid rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(20px);
+position: relative;
+opacity: 0;
+transform: translateY(30px);
+animation: fadeInUp 0.6s ease forwards;
+}
+
+.game::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+opacity: 0;
+transition: opacity 0.3s ease;
+z-index: 1;
+}
+
+.game:hover::before {
+opacity: 1;
+}
+
+.game:hover {
+transform: translateY(-15px) scale(1.02);
+box-shadow:
+0 25px 50px rgba(0, 0, 0, 0.5),
+0 0 30px rgba(102, 126, 234, 0.3),
+inset 0 1px 0 rgba(255, 255, 255, 0.1);
+border-color: rgba(102, 126, 234, 0.5);
+}
+
+.game-image {
+width: 100%;
+height: 200px;
+object-fit: cover;
+transition: transform 0.4s ease;
+position: relative;
+z-index: 2;
+}
+
+.game:hover .game-image {
+transform: scale(1.05);
+}
+
+.game-content {
+padding: 1.5rem;
+position: relative;
+z-index: 2;
+}
+
+.game-title {
+font-size: 1.1rem;
+font-weight: 600;
+margin-bottom: 0.5rem;
+color: white;
+text-decoration: none;
+display: block;
+transition: color 0.3s ease;
+}
+
+.game-title:hover {
+color: #667eea;
+}
+
+.game-category {
+font-size: 0.85rem;
+color: rgba(255, 255, 255, 0.6);
+text-transform: uppercase;
+letter-spacing: 0.5px;
+font-weight: 500;
+}
+
+.loading-text {
+text-align: center;
+font-size: 1.2rem;
+color: rgba(255, 255, 255, 0.7);
+margin: 2rem 0;
+}
+
+.no-results {
+text-align: center;
+font-size: 1.1rem;
+color: rgba(255, 255, 255, 0.7);
+margin: 2rem 0;
+}
+
+.no-results a {
+color: #667eea;
+text-decoration: underline;
+transition: color 0.3s ease;
+}
+
+.no-results a:hover {
+color: #764ba2;
+}
+
+@keyframes fadeInUp {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.fade-in {
+animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+.header h1 {
+font-size: 2rem;
+}
+
+.search-container {
+flex-direction: column;
+align-items: center;
+}
+
+.search-input {
+width: 100%;
+max-width: 300px;
+}
+
+.games {
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 1.5rem;
+}
+
+.container {
+padding: 1rem;
+}
+}
+
+/* Glowing effect on scroll */
+.game.in-view {
+box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+background: linear-gradient(135deg, #667eea, #764ba2);
+border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: linear-gradient(135deg, #764ba2, #667eea);
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Game Library</h1>
+</div>
+
+<div class="search-container">
+<input type="text" id="searchInput" class="search-input" placeholder="Search games...">
+<select id="categorySelect" class="category-select">
+<option value="all">All Categories</option>
+<option value="action">Action</option>
+<option value="adventure">Adventure</option>
+<option value="puzzle">Puzzle</option>
+<option value="strategy">Strategy</option>
+<option value="sports">Sports</option>
+</select>
+</div>
+
+<div id="searchResults" class="games">
+<div class="loading-text">Games Loading...</div>
+</div>
+</div>
+
+<!-- Template for game cards -->
+<template id="searchResultTemplate">
+<div class="game">
+<img src="{{image}}" alt="{{title}}" class="game-image" loading="lazy">
+<div class="game-content">
+<a href="{{url}}" class="game-title">{{title}}</a>
+<div class="game-category">{{category}}</div>
+</div>
+</div>
+</template>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const searchInput = document.getElementById('searchInput');
+const categorySelect = document.getElementById('categorySelect');
+const searchResults = document.getElementById('searchResults');
+const searchResultTemplate = document.getElementById('searchResultTemplate').innerHTML;
+
+searchResults.innerHTML = '<div class="loading-text">Games Loading...</div>';
+
+// Mock data for demonstration - replace with your games.json fetch
+const mockData = [
+{ title: "Cyber Quest", category: "action", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=280&h=200&fit=crop", url: "#" },
+{ title: "Pixel Adventure", category: "adventure", image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=280&h=200&fit=crop", url: "#" },
+{ title: "Mind Puzzler", category: "puzzle", image: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=280&h=200&fit=crop", url: "#" },
+{ title: "Strategy Master", category: "strategy", image: "https://images.unsplash.com/photo-1578662015705-4da89e8f297e?w=280&h=200&fit=crop", url: "#" },
+{ title: "Sports Arena", category: "sports", image: "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=280&h=200&fit=crop", url: "#" }
+];
+
+// Uncomment this section to use your actual games.json
+/*
+fetch('games.json')
+.then(response => response.json())
+.then(data => {
+renderSearchResults('', categorySelect.value, data);
+})
+.catch(error => {
+console.error('Error fetching data:', error);
+searchResults.innerHTML = '<div class="no-results">Error loading games. Please try again later.</div>';
+});
+*/
+
+function renderTemplate(template, data) {
+return template.replace(/{{(.*?)}}/g, (match, key) => data[key.trim()] || '');
+}
+
+function renderSearchResults(searchTerm = '', category = 'all', data = mockData) {
+searchResults.innerHTML = '';
+
+const filteredResults = data.filter(item => {
+const itemCategory = String(item.category).trim().toLowerCase();
+const selectedCategory = String(category).trim().toLowerCase();
+const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
+const matchesCategory = category === 'all' || itemCategory === selectedCategory;
+return matchesSearch && matchesCategory;
+});
+
+if (filteredResults.length === 0) {
+searchResults.innerHTML = '<div class="no-results">No games were found. Request some from our <a href="https://discord.gg/cnetwork">Discord server</a>!</div>';
+return;
+}
+
+filteredResults.forEach((result, index) => {
+const renderedTemplate = renderTemplate(searchResultTemplate, result);
+
+const wrapper = document.createElement('div');
+wrapper.innerHTML = renderedTemplate;
+const resultElement = wrapper.firstElementChild;
+
+resultElement.style.animationDelay = `${index * 100}ms`;
+searchResults.appendChild(resultElement);
+});
+
+// Add intersection observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('in-view');
+}
+});
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.game').forEach(game => {
+observer.observe(game);
+});
+}
+
+function debounce(fn, delay) {
+let timeout;
+return function (...args) {
+clearTimeout(timeout);
+timeout = setTimeout(() => fn.apply(this, args), delay);
+};
+}
+
+const debouncedSearch = debounce(() => {
+renderSearchResults(searchInput.value.trim(), categorySelect.value);
+}, 300);
+
+// Initial render with mock data
+renderSearchResults('', categorySelect.value);
+
+searchInput.addEventListener('input', debouncedSearch);
+
+categorySelect.addEventListener('change', function () {
+renderSearchResults(searchInput.value.trim(), categorySelect.value);
+});
+
+// Add some interactive effects
+document.addEventListener('mousemove', function(e) {
+const games = document.querySelectorAll('.game');
+games.forEach(game => {
+const rect = game.getBoundingClientRect();
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+
+if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+const centerX = rect.width / 2;
+const centerY = rect.height / 2;
+const rotateX = (y - centerY) / 20;
+const rotateY = (centerX - x) / 20;
+
+game.style.transform = `translateY(-15px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+});
+});
+
+document.addEventListener('mouseleave', function() {
+const games = document.querySelectorAll('.game:hover');
+games.forEach(game => {
+game.style.transform = '';
+});
+});
+});
+</script>
+</body>
+</html>

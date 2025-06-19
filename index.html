@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </script>
 
 
-  <script src="tabcloak.js"></script>
+<script src="js/tabcloak.js"></script>
 
 
     <div class="menu">
@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p>Add a favorite</p>
   <select id="favoritesDropdown"></select>
   <button id="confirmFavorite" onclick="saveFavorite(); displayFavorites()">Confirm</button> <button onclick="addFavorite()">Cancel</button>
-  <script src="favorites.js"></script>
+  <script src="js/favorites.js"></script>
   </div>
   <div id="favorites-container"></div>
   
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </form>
 </center>
 
-<!-- This should be outside the form -->
+
 <div id="favorite">
   <button id="closeFavorite" onclick="toggleFavorite()">❌</button>
   <p id="favp" style="color:white;text-align:center;display:none;">No favorites yet</p>
@@ -590,14 +590,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
 
-<div id="shortcuts-area" style="margin-top: 20px; text-align: center;">
-  <div id="shortcuts-container" class="shortcuts"></div>
-<button id="addShortcutBtn" class="add-shortcut" style="margin-top: 30px; height: 3.3em; position: relative;">
-  <div class="btn-content">
-    <img src="images/plus.png" style="margin-top: 2px;">
-    <span class="btn-label">Add Shortcut</span>
-  </div>
-</button>
 
                                          
 
@@ -611,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-<script src="shortcut.js"></script>
+<script src="js/shortcut.js"></script>
 <script>
   function isMobile() {
   return /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -626,7 +618,7 @@ if (isMobile()) {
 
 
 
-<script src="proxy.js"></script>
+<script src="js/proxy.js"></script>
   <script type="text/javascript" src="//www.highperformanceformat.com/e4864d748839689c514b96e8faa75ed3/invoke.js"></script>
   </div>
 </center>

@@ -638,14 +638,9 @@ position: relative;
   position: relative;
    animation: fadeInUp 1s ease forwards;
   opacity: 0; 
+  box-shadow: none;
 }
 
-
-#uv-address:hover,
-#uv-address:focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7);
-}
 
 
 #uv-address::placeholder {
