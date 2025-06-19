@@ -183,7 +183,7 @@ font-size: 12rem;
 
 
 .menu {
-  background: linear-gradient(135deg, #000000, #1c1c1c);
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
