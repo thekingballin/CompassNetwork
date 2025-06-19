@@ -1,16 +1,15 @@
-
 # Compass
 
-The best Proxy And Game Website You will ever find 
+The best Proxy And Game Website You will ever find
 
 
-## Staff
-- FOUNDER - [@txvander](https://x.com/txvander)
+## STAFF
+- OWNER -[@TheKingBallen](https://github.com/your-local-indian)
 - LEAD STAFF - [@Oilerman](https://github.com/oilerman111)
-- STAFF -[@TheKingBallen](https://github.com/your-local-indian)
-- STAFF - [@Citraw](https://github.com/cyancitra)
-- LEAD STAFF - [@NotEnoughJack](https://github.com/NotEnoughJack)
+- LEAD STAFF - [@Citraw](https://github.com/cyancitra)
+- STAFF - [@NotEnoughJack](https://github.com/NotEnoughJack)
 - CONTENT MANAGER - [@Exodapro](https://compassnetwork.online/credits.html)
+- RETIRED FOUNDER - [@txvander](https://x.com/txvander)
 ## Acknowledgements
 
  - [3kh0](https://adfree3kh0.github.io/projects.html)
@@ -29,4 +28,3 @@ Join our discord to get started.
 
 
 ![Logo](https://raw.githubusercontent.com/txvander/CompassNetwork/main/images/newlogo.png)
-
