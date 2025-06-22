@@ -244,13 +244,9 @@ if (isMobile()) {
     <span class="link-title">Credits</span>
   </a>
 
-  
 </div>
-  
-
-
-      <script src="js/search.js"></script>
-  <div id="searchContainer">
+    <script src="js/search.js"></script>
+    <div id="searchContainer">
         <input type="text" id="searchInput" placeholder="Search games...">
         <select id="categorySelect">
             <option value="all">All Games</option>
@@ -260,18 +256,17 @@ if (isMobile()) {
             <option value="arcade">Arcade Games</option>
         </select>
     </div>
- 
     <center>
-    <div class="save-controls">
+      <div class="save-controls">
         <button onclick="exportLocalStorage()">Download Save</button>
         <button id="loadSaveBtn">Load Save</button>
         <input type="file" id="uploadSave" accept=".txt" style="display:none"/>
-    </div>
+        <script src="js/save.js"></script>
+      </div>
     </center>
     <div class="games" id="games">
         <div id="searchResults"></div>
     </div>
-
     <script type="text/html" id="searchResultTemplate">
         <div class="game {{id}}">
             <a href="{{link}}">
@@ -280,32 +275,9 @@ if (isMobile()) {
                     <h2>{{title}}</h2>
                 </div>
             </a>
-        </div>
-        
-      </script>
-
-      
-  </div>
-
-    
-
-
-
-
-
-
-    </div>
-
-    </main>
-    
+        </div>       
+    </script>
 </div>
 
-    
-    
-
-
-
-
-
-    </body>
+</body>
 </html>
