@@ -195,7 +195,8 @@ font-size: 12rem;
   margin: 20px auto;
   margin-top: 34px;
   padding: 0 20px;
-  width: 750px;
+  width: 390px;
+  transition: ease-in-out .3s;
   max-width: 100%;
 }
 
@@ -234,16 +235,13 @@ font-size: 12rem;
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(0, 0, 0);
   transform: translateX(100%);
   transition: transform 0.25s ease;
   transform-origin: left;
 }
 
-.link:hover,
-.link:focus {
-  width: 130px;
-}
+
 
 .link:hover::before,
 .link:focus::before {
@@ -272,10 +270,14 @@ font-size: 12rem;
   color: #e0e0e0;
 }
 
-.link:hover .link-title,
-.link:focus .link-title {
+.menu:hover .link-title,
+.menu:focus .link-title {
   opacity: 1;
   transform: translateX(0);
+}
+
+.menu:hover {
+width: 750px;
 }
 
 #nav-logo {
