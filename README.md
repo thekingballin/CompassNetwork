@@ -4,12 +4,11 @@ The best Proxy And Game Website You will ever find
 
 
 ## STAFF
-- OWNER -[@TheKingBallen](https://github.com/your-local-indian)
-- LEAD STAFF - [@Oilerman](https://github.com/oilerman111)
-- LEAD STAFF - [@Citraw](https://github.com/cyancitra)
-- STAFF - [@NotEnoughJack](https://github.com/NotEnoughJack)
-- CONTENT MANAGER - [@Exodapro](https://compassnetwork.online/credits.html)
-- RETIRED FOUNDER - [@txvander](https://x.com/txvander)
+- DEVELOPER & OWNER -[@TheKingBallin](https://github.com/thekingballin)
+- DEVELOPER - [@Citraw](https://github.com/cyancitra)
+- DEVELOPER - [@NotEnoughJack](https://github.com/NotEnoughJack)
+- DEVELOPER - [@xpki](https://github.com/xpki)
+
 ## Acknowledgements
 
  - [3kh0](https://adfree3kh0.github.io/projects.html)
